@@ -1,10 +1,15 @@
-import { DashboardComponent } from "./dashboard.component";
+import { AppInfoService } from 'src/app/shared/services/api/app-info.service';
+import { instance, mock } from 'ts-mockito';
+
+import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
+  let appInfoServiceMock: AppInfoService;
 
   beforeEach(() => {
-    component = new DashboardComponent();
+    appInfoServiceMock = mock(AppInfoService);
+    component = new DashboardComponent(instance(appInfoServiceMock));
   });
 
   it('should create the component', () => {
