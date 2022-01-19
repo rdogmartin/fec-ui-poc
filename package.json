@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@ngneat/elf": "^1.0.2",
+    "@ngneat/elf-devtools": "^1.2.0",
+    "@ngneat/elf-entities": "^2.1.0",
+    "@ngneat/elf-requests": "^1.1.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -47,5 +51,10 @@
     "prettier": "2.5.1",
     "ts-mockito": "^2.6.1",
     "typescript": "~4.4.3"
+  },
+  "elf": {
+    "cli": {
+      "repoTemplate": "class"
+    }
   }
 }
