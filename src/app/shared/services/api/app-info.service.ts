@@ -5,13 +5,10 @@ import { Observable } from 'rxjs';
 import { AppInfo } from '../../models/api/model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppInfoService {
-
-  public constructor(
-    private http: HttpClient,
-  ) {}
+  public constructor(private http: HttpClient) {}
 
   public getAppInfo(): Observable<AppInfo> {
     const url = 'https://localhost:7107/api/appinfo';

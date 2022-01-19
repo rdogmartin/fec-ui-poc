@@ -1,4 +1,4 @@
-import { DemoComponent } from "./demo.component";
+import { DemoComponent } from './demo.component';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;
