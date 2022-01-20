@@ -4,12 +4,13 @@ import { selectActiveEntity, setActiveId, setEntities, withActiveId, withEntitie
 import { createRequestsCacheOperator, updateRequestCache, withRequestsCache } from '@ngneat/elf-requests';
 import { AppInfo } from 'src/app/shared/models/api/model';
 
+export const appInfoId = 'appInfo';
 const { state, config } = createState(
   withEntities<AppInfo, 'versionNumber'>({ idKey: 'versionNumber' }),
-  withRequestsCache<'appInfo'>(),
+  withRequestsCache<typeof appInfoId>(),
   withActiveId()
 );
-const store = new Store({ name: 'appInfo', state, config });
+const store = new Store({ name: appInfoId, state, config });
 export const skipWhileAppInfosCached = createRequestsCacheOperator(store);
 
 @Injectable({
@@ -19,6 +20,6 @@ export class AppInfoRepository {
   activeAppInfo$ = store.pipe(selectActiveEntity());
 
   setAppInfo(appInfo: AppInfo) {
-    store.update(updateRequestCache('appInfo'), setEntities([appInfo]), setActiveId(appInfo.versionNumber));
+    store.update(updateRequestCache(appInfoId), setEntities([appInfo]), setActiveId(appInfo.versionNumber));
   }
 }
