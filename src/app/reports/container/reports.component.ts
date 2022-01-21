@@ -4,11 +4,11 @@ import { AppInfo } from 'src/app/shared/models/api/model';
 import { AppInfoService } from 'src/app/shared/services/api/app-info.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.scss'],
 })
-export class DashboardComponent {
+export class ReportsComponent {
   public appInfo$: Observable<AppInfo>;
 
   public constructor(private appInfoService: AppInfoService) {
