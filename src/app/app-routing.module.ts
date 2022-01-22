@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { DefaultComponent } from './layouts/default/default.component';
+
 import { MainComponent } from './layouts/main/main.component';
-import { DemoComponent } from './modules/demo/demo.component';
 import { ReportsComponent } from './modules/reports/reports.component';
 
 const routes: Routes = [
@@ -27,7 +26,7 @@ const routes: Routes = [
     children: [
       {
         path: 'demo',
-        component: DemoComponent,
+        loadChildren: () => import('./modules/demo/demo.module').then((m) => m.DemoModule),
       },
     ],
   },
