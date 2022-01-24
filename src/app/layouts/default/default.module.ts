@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { ReportsComponent } from 'src/app/modules/reports/reports.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { MainComponent } from './main.component';
+import { DefaultComponent } from './default.component';
 
 @NgModule({
-  declarations: [MainComponent, ReportsComponent],
+  declarations: [DefaultComponent, ReportsComponent],
   imports: [CommonModule, SharedModule],
 })
-export class MainModule {}
+export class DefaultModule {}

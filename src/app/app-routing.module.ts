@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './layouts/empty/empty.component';
 
-import { MainComponent } from './layouts/main/main.component';
+import { DefaultComponent } from './layouts/default/default.component';
 import { ReportsComponent } from './modules/reports/reports.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    component: DefaultComponent,
     children: [
       {
         path: '',
