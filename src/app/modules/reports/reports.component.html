@@ -1,7 +1,7 @@
-<main *ngIf="appInfo$ | async as appInfo">
+<main *ngIf="appInfo$ | async as appInfo" class="main">
   <h1>Reports</h1>
   <p><a routerLink="/demo">Dev demo</a></p>
-  <p><button mat-raised-button color="primary">Primary</button></p>
+  <p><button mat-raised-button color="primary" routerLink="/demo">Dev demo</button></p>
 
   <p>Version {{appInfo.versionNumber}}</p>
 </main>

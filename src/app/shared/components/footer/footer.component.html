@@ -1,1 +1,1 @@
-<p>footer works!</p>
+<footer *ngIf="appInfo$ | async as appInfo">Version {{appInfo.versionNumber}}</footer>
