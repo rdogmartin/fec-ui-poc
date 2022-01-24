@@ -1,6 +1,7 @@
 <main *ngIf="appInfo$ | async as appInfo">
   <h1>Reports</h1>
   <p><a routerLink="/demo">Dev demo</a></p>
+  <p><button mat-raised-button color="primary">Primary</button></p>
 
   <p>Version {{appInfo.versionNumber}}</p>
 </main>

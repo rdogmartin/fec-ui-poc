@@ -12,6 +12,8 @@ export class AppInfoService {
   public constructor(private http: HttpClient, private appInfoRepository: AppInfoRepository) {}
 
   public getAppInfo(): Observable<AppInfo> {
+    return of({ versionNumber: '1.0.0' });
+
     const url = 'https://localhost:7107/api/appinfo';
 
     return this.http.get<AppInfo>(url).pipe(
