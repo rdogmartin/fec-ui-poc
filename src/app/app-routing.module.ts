@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DefaultComponent } from './layouts/default/default.component';
+import { EmptyComponent } from './layouts/empty/empty.component';
 
 import { MainComponent } from './layouts/main/main.component';
 import { ReportsComponent } from './modules/reports/reports.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultComponent,
+    component: EmptyComponent,
     children: [
       {
         path: 'demo',

@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DefaultModule } from './layouts/default/default.module';
+import { EmptyModule } from './layouts/empty/empty.module';
 import { MainModule } from './layouts/main/main.module';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { MainModule } from './layouts/main/main.module';
     HttpClientModule,
     /** Our modules */
     AppRoutingModule,
-    DefaultModule,
+    EmptyModule,
     MainModule,
   ],
   providers: [],

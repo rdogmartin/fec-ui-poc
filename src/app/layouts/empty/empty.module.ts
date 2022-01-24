@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { DefaultComponent } from './default.component';
+import { EmptyComponent } from './empty.component';
 
 @NgModule({
-  declarations: [DefaultComponent],
+  declarations: [EmptyComponent],
   imports: [CommonModule, SharedModule],
 })
-export class DefaultModule {}
+export class EmptyModule {}
