@@ -9,4 +9,4 @@ import { ReportsRoutingModule } from './reports-routing.module';
   declarations: [ReportsComponent],
   imports: [CommonModule, ReportsRoutingModule, SharedModule],
 })
-export class RepoortsModule {}
+export class ReportsModule {}
