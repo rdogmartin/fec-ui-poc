@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './layouts/empty/empty.component';
 
 import { DefaultComponent } from './layouts/default/default.component';
-import { ReportsComponent } from './modules/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -12,11 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ReportsComponent,
+        loadChildren: () => import('./modules/reports/reports.module').then((m) => m.RepoortsModule),
       },
       {
         path: 'reports',
-        component: ReportsComponent,
+        loadChildren: () => import('./modules/reports/reports.module').then((m) => m.RepoortsModule),
       },
     ],
   },
