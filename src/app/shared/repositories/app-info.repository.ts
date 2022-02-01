@@ -2,24 +2,33 @@ import { Injectable } from '@angular/core';
 import { createState, Store } from '@ngneat/elf';
 import { selectActiveEntity, setActiveId, setEntities, withActiveId, withEntities } from '@ngneat/elf-entities';
 import { createRequestsCacheOperator, updateRequestCache, withRequestsCache } from '@ngneat/elf-requests';
+import { filter, map } from 'rxjs';
 import { AppInfo } from 'src/app/shared/models/api/model';
-
-export const appInfoId = 'appInfo';
-const { state, config } = createState(
-  withEntities<AppInfo, 'versionNumber'>({ idKey: 'versionNumber' }),
-  withRequestsCache<typeof appInfoId>(),
-  withActiveId()
-);
-const store = new Store({ name: appInfoId, state, config });
-export const skipWhileAppInfosCached = createRequestsCacheOperator(store);
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppInfoRepository {
-  activeAppInfo$ = store.pipe(selectActiveEntity());
+  public appInfoId = 'appInfo';
+  private state = createState(
+    withEntities<AppInfo, 'versionNumber'>({ idKey: 'versionNumber' }),
+    withRequestsCache<typeof this.appInfoId>(),
+    withActiveId(),
+  );
+  private store = new Store({ name: this.appInfoId, state: this.state.state, config: this.state.config });
+  public skipWhileAppInfosCached = createRequestsCacheOperator(this.store);
 
-  setAppInfo(appInfo: AppInfo) {
-    store.update(updateRequestCache(appInfoId), setEntities([appInfo]), setActiveId(appInfo.versionNumber));
+  /** Gets the active AppInfo from the store. Be sure the object has been inserted into the store with
+   * setActiveAppInfo() prior to accessing this property. */
+  public activeAppInfo$ = this.store.pipe(selectActiveEntity()).pipe(
+    filter((appInfo) => !!appInfo),
+    map((appInfo) => appInfo as AppInfo),
+  );
+
+  /** Insert the AppInfo into the store. The data exist only in the browser's memory and is released
+   * when the user navigates to another app or does a browser refresh.
+   */
+  public setActiveAppInfo(appInfo: AppInfo) {
+    this.store.update(updateRequestCache(this.appInfoId), setEntities([appInfo]), setActiveId(appInfo.versionNumber));
   }
 }

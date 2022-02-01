@@ -35,7 +35,8 @@
           {
             "__comment": "These prettier settings are not visible to the VSCode extension 'Prettier - Code formatter', so they are repeated in .prettierrc. Be sure to keep these settings in sync.",
             "endOfLine": "auto",
-            "printWidth": 120
+            "printWidth": 120,
+            "trailingComma": "all"
           }
         ],
         "@angular-eslint/directive-selector": [
