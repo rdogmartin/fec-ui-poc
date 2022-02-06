@@ -14,8 +14,6 @@ export class AppInfoService {
    * the browser's cache, it is retrieved from the server and inserted into the cache prior to returning.
    */
   public getAppInfo(): Observable<AppInfo> {
-    return of({ versionNumber: '0.1.0' });
-
     const url = 'https://localhost:7107/api/appinfo';
 
     return this.http.get<AppInfo>(url).pipe(

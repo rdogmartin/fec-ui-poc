@@ -1,20 +1,36 @@
 import { HttpClient } from '@angular/common/http';
-import { instance, mock } from 'ts-mockito';
-import { AppInfoRepository } from '../../repositories/app-info.repository';
+import { firstValueFrom, of } from 'rxjs';
+import { AppInfo } from 'src/app/shared/models/api/model';
+import { AppInfoRepository } from 'src/app/shared/repositories/app-info.repository';
+import { anything, instance, match, mock, verify, when } from 'ts-mockito';
+
 import { AppInfoService } from './app-info.service';
 
 describe('AppInfoService', () => {
   let service: AppInfoService;
   let httpClientMock: HttpClient;
-  let appInfoRepositoryMock: AppInfoRepository;
+  let appInfoRepository: AppInfoRepository;
 
   beforeEach(() => {
     httpClientMock = mock(HttpClient);
-    appInfoRepositoryMock = mock(AppInfoRepository);
-    service = new AppInfoService(instance(httpClientMock), instance(appInfoRepositoryMock));
+    appInfoRepository = new AppInfoRepository();
+    service = new AppInfoService(instance(httpClientMock), appInfoRepository);
   });
 
-  it('should create the service', () => {
-    expect(service).toBeTruthy();
+  describe('getAppInfo()', () => {
+    let expected: AppInfo;
+
+    beforeEach(() => {
+      expected = {
+        versionNumber: '0.1.0',
+      };
+      when(httpClientMock.get(anything())).thenReturn(of(expected));
+    });
+
+    it('should NOT query the API when the item is already in cache', async () => {
+      await firstValueFrom(service.getAppInfo()); // Invokes the HTTP call
+      await firstValueFrom(service.getAppInfo()); // Should return from cache
+      verify(httpClientMock.get(match('/api/appinfo'))).once(); // Fails with a message saying there were two HTTP calls
+    });
   });
 });
