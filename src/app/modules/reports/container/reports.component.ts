@@ -8,10 +8,4 @@ import { AppInfoService } from 'src/app/shared/services/api/app-info.service';
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],
 })
-export class ReportsComponent {
-  public appInfo$: Observable<AppInfo>;
-
-  public constructor(private appInfoService: AppInfoService) {
-    this.appInfo$ = this.appInfoService.getAppInfo();
-  }
-}
+export class ReportsComponent {}
