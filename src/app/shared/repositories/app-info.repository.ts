@@ -3,7 +3,8 @@ import { createState, Store } from '@ngneat/elf';
 import { selectActiveEntity, setActiveId, setEntities, withActiveId, withEntities } from '@ngneat/elf-entities';
 import { createRequestsCacheOperator, updateRequestCache, withRequestsCache } from '@ngneat/elf-requests';
 import { filter, map } from 'rxjs';
-import { AppInfo } from 'src/app/shared/models/api/model';
+
+import { AppInfo } from '../../shared/models/api/model';
 
 @Injectable({
   providedIn: 'root',

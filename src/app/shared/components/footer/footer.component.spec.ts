@@ -1,6 +1,6 @@
-import { AppInfoService } from 'src/app/shared/services/api/app-info.service';
 import { instance, mock } from 'ts-mockito';
 
+import { AppInfoService } from '../../../shared/services/api/app-info.service';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {

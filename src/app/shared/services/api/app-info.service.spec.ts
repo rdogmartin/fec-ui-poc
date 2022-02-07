@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, of } from 'rxjs';
-import { AppInfo } from 'src/app/shared/models/api/model';
-import { AppInfoRepository } from 'src/app/shared/repositories/app-info.repository';
 import { anything, instance, match, mock, verify, when } from 'ts-mockito';
 
+import { AppInfo } from '../../../shared/models/api/model';
+import { AppInfoRepository } from '../../../shared/repositories/app-info.repository';
 import { AppInfoService } from './app-info.service';
 
 describe('AppInfoService', () => {

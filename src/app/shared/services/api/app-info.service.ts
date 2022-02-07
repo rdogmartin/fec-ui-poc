@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMapTo, tap } from 'rxjs';
-import { AppInfo } from 'src/app/shared/models/api/model';
-import { AppInfoRepository } from 'src/app/shared/repositories/app-info.repository';
+
+import { AppInfo } from '../../../shared/models/api/model';
+import { AppInfoRepository } from '../../../shared/repositories/app-info.repository';
 
 @Injectable({
   providedIn: 'root',
